@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "all-addons",
+  "version": "${version}",
+  "name": "AllAddons",
+  "description": "A single Meteor Client addon that bundles the most useful features of popular community addons, ported to Meteor ${minecraft_version}.",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    "hyetanapope-bot",
+    "AllAddons contributors"
+  ],
+  "contact": {
+    "sources": "https://github.com/hyetanapope-bot/meteor-all-addon",
+    "issues": "https://github.com/hyetanapope-bot/meteor-all-addon/issues"
+  },
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "dev.alladdon.AllAddons"
+    ]
+  },
+  "icon": "assets/all-addons/icon.png",
+  "custom": {
+    "meteor-client:color": "170,120,255",
+    "modmenu": {
+      "parent": {
+        "id": "meteor-client"
+      }
+    }
+  },
+  "depends": {
+    "java": ">=${jdk_version}",
+    "minecraft": "${minecraft_version}",
+    "fabricloader": ">=0.19.5",
+    "meteor-client": "*"
+  }
+}

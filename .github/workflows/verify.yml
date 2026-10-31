@@ -1,0 +1,27 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout addon
+        uses: actions/checkout@v4
+
+      - name: Checkout meteor-client for API verification
+        uses: actions/checkout@v4
+        with:
+          repository: MeteorDevelopment/meteor-client
+          path: meteor-client
+          fetch-depth: 1
+
+      - name: Verify sources
+        run: python3 tools/verify.py --meteor meteor-client
+
+      - name: Verify icon generator output is current
+        run: |
+          python3 tools/make_icon.py
+          git diff --exit-code -- src/main/resources/assets/all-addons/icon.png
